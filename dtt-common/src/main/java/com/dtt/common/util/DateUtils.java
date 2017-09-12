@@ -20,8 +20,8 @@ import java.util.List;
 public class DateUtils {
 
 	public static final String ddMMyyyy = "dd/MM/yyyy";
-	public static final String ddMMyyyyHHmmSS = "dd/MM/yyyy HH:mm:ss";
-	public static final String HHmmSSddMMyyyy = "HH:mm:ss dd/MM/yyyy";
+	public static final String ddMMyyyyHHmmss = "dd/MM/yyyy HH:mm:ss";
+	public static final String HHmmssddMMyyyy = "HH:mm:ss dd/MM/yyyy";
 
 	public static final String ddMMHHmm = "dd/MM HH:mm";
 	public static final String HHmmddMM = "HH:mm dd/MM";
