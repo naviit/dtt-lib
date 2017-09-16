@@ -62,7 +62,7 @@ public class Page<E> {
 	public List<E> getPageItems() { return pageItems; }
 	public void setPageItems(List<E> pageItems) { this.pageItems = pageItems; }
 	
-	private void computePagesAvailable(long numberOfResults, int size) {
+	public void computePagesAvailable(long numberOfResults, int size) {
 		this.pageSize = size;
 		this.totalItems = numberOfResults;
 		this.pagesAvailable = 0;
