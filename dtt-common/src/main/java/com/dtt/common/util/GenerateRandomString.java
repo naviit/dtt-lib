@@ -1,17 +1,9 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
 package com.dtt.common.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 
-/**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created: 09/07/2017
- */
 public class GenerateRandomString {
 
 	private static final char[] VALUES = {'a','b','c','d','e','f','g','h','i','j',

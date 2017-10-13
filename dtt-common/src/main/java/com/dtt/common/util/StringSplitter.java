@@ -1,16 +1,8 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
 package com.dtt.common.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created on 05/03/2017
- */
 public class StringSplitter {
 
 	public static List<String> toListBySpace(String value) {

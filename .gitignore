@@ -1,14 +1,20 @@
-# Common
-*/.classpath
-*/.project
-*/target/
-*/bin/
-*/logs/
-*/*.db
-*/*.log
-*/.settings/
+# See: https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Folders
+target/
+bin/
+.settings/
 .metadata/
 .recommenders/
+logs/
+exports/
+
+# Files
+*.log
+*.db
+*.class
+**/.classpath
+**/.project
 
 # STS
 .apt_generated
@@ -23,21 +29,25 @@ dist/
 nbdist/
 .nb-gradle/
 
-# IntelliJ IDEA
-.idea
+# IntelliJ
+.idea/
 *.iws
 *.iml
 *.ipr
-**/.DS_Store
 
-# VS Code
-*/.vscode/
+# BlueJ Files
+*.ctxt
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-# BlueJ files
-*.ctxt

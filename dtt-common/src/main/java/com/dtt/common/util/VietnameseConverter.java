@@ -1,13 +1,5 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
 package com.dtt.common.util;
 
-/**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created on 05/03/2017
- */
 public class VietnameseConverter {
 
 	public static String toTextNotMarked(String text) {
@@ -414,10 +406,5 @@ public class VietnameseConverter {
 		}
 		return builder.toString();
 	}
-
-	/*public static void main(String[] args) {
-		System.out.println(toTextNotMarked("Bộ Lao động - Thương binh và Xã hội (LĐ-TB&XH) vừa thành lập "));
-		System.out.println(toAlias("Bộ Lao động - Thương binh và Xã hội (LĐ-TB&XH) vừa thành lập "));
-	}*/
 
 }
