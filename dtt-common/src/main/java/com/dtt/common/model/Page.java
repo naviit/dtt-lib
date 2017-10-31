@@ -14,27 +14,27 @@ import java.util.List;
 public class Page<E> {
 
 	private int pageNumber;
-	private int pageSize = 10;
+	private int pageSize;
 	private int pagesAvailable;
 	private long totalItems;
 	private long time;
 	public List<E> pageItems;
-	
+
 	public Page() {
 		this.pageItems = new ArrayList<E>(10);
 	}
-	
+
 	public Page(int pageNumber, int pagesAvailable) {
 		this.pageNumber = pageNumber;
 		this.pagesAvailable = pagesAvailable;
 		this.pageItems = new ArrayList<E>(10);
 	}
-	
+
 	public Page(List<E> all, int pageNumber, int pageSize) {
 		this.pageNumber = pageNumber;
 		this.pageItems = new ArrayList<E>(pageSize);
 		this.computePagesAvailable(all.size(), pageSize);
-		
+
 		int start = (pageNumber - 1) * pageSize;
 		int end = (int) Math.min(this.totalItems, pageNumber * pageSize);
 		if (all.size() <= pageSize) {
@@ -58,10 +58,10 @@ public class Page<E> {
 
 	public long getTime() { return time; }
 	public void setTime(long time) { this.time = time; }
-	
+
 	public List<E> getPageItems() { return pageItems; }
 	public void setPageItems(List<E> pageItems) { this.pageItems = pageItems; }
-	
+
 	public void computePagesAvailable(long numberOfResults, int size) {
 		this.pageSize = size;
 		this.totalItems = numberOfResults;
@@ -72,5 +72,5 @@ public class Page<E> {
 			this.pagesAvailable = (int) (totalItems / pageSize) + 1;
 		}
 	}
-	
+
 }

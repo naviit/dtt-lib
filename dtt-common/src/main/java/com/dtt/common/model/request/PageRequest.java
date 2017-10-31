@@ -16,8 +16,8 @@ public class PageRequest {
 	private String fromDate;
 	private String toDate;
 
-	private Integer index;
-	private Integer size;
+	private int pageNumber;
+	private int pageSize;
 
 	public PageRequest() {}
 
@@ -30,11 +30,11 @@ public class PageRequest {
 	public String getToDate() { return toDate; }
 	public void setToDate(String toDate) { this.toDate = toDate; }
 
-	public Integer getIndex() { return index; }
-	public void setIndex(Integer index) { this.index = index; }
+	public int getPageNumber() { return pageNumber; }
+	public void setPageNumber(int pageNumber) { this.pageNumber = pageNumber; }
 
-	public Integer getSize() { return size; }
-	public void setSize(Integer size) { this.size = size; }
+	public int getPageSize() { return pageSize; }
+	public void setPageSize(int pageSize) { this.pageSize = pageSize; }
 
 	@Override
 	public String toString() {
