@@ -6,6 +6,9 @@ package com.dtt.common.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dtt.common.util.DTTConstant;
+import com.dtt.common.util.JsonUtils;
+
 /**
  * Author: Dang Thanh Tung
  * 		Email: dtt.dangthanhtung@gmail.com
@@ -15,33 +18,30 @@ public class Page<E> {
 
 	private int pageNumber;
 	private int pageSize;
-	private int pagesAvailable;
-	private long totalItems;
-	private long time;
 	public List<E> pageItems;
 
+	private long totalItems;
+	private int pagesAvailable;
+
+	private long time;
+
 	public Page() {
-		this.pageItems = new ArrayList<E>(10);
+		this.pageItems = new ArrayList<E>(DTTConstant.DEFAULT_PAGE_SIZE);
 	}
 
-	public Page(int pageNumber, int pagesAvailable) {
+	public Page(int pageNumber, int pageSize) {
 		this.pageNumber = pageNumber;
-		this.pagesAvailable = pagesAvailable;
-		this.pageItems = new ArrayList<E>(10);
-	}
-
-	public Page(List<E> all, int pageNumber, int pageSize) {
-		this.pageNumber = pageNumber;
+		this.pageSize = pageSize;
 		this.pageItems = new ArrayList<E>(pageSize);
-		this.computePagesAvailable(all.size(), pageSize);
+	}
 
-		int start = (pageNumber - 1) * pageSize;
-		int end = (int) Math.min(this.totalItems, pageNumber * pageSize);
-		if (all.size() <= pageSize) {
-			this.pageItems = all;
-		} else {
-			if(start >= 0 && end > start) this.pageItems.addAll(all.subList(start, end)); 
-		}
+	public Page(int pageNumber, int pageSize, long totalItems) {
+		this.pageNumber = pageNumber;
+		this.pageSize = pageSize;
+		this.pageItems = new ArrayList<E>(pageSize);
+
+		this.totalItems = totalItems;
+		this.computePagesAvailable(totalItems, pageSize);
 	}
 
 	public int getPageNumber() { return pageNumber; }
@@ -62,15 +62,18 @@ public class Page<E> {
 	public List<E> getPageItems() { return pageItems; }
 	public void setPageItems(List<E> pageItems) { this.pageItems = pageItems; }
 
-	public void computePagesAvailable(long numberOfResults, int size) {
-		this.pageSize = size;
-		this.totalItems = numberOfResults;
+	public void computePagesAvailable(long totalItems, int pageSize) {
 		this.pagesAvailable = 0;
 		if(totalItems % pageSize == 0) {
 			this.pagesAvailable = (int) (totalItems / pageSize);
 		} else {
 			this.pagesAvailable = (int) (totalItems / pageSize) + 1;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return JsonUtils.toJson(this);
 	}
 
 }
