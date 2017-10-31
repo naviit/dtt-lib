@@ -9,11 +9,11 @@ package com.dtt.common.util;
  * Created: 11/07/2017
  */
 public class DTTConstant {
-	
+
 	// Paging
-	private static final int DEFAULT_PAGE_SIZE = 10;
-	private static final int DEFAULT_PAGE_NUMBER = 1;
-	
+	public static final int DEFAULT_PAGE_SIZE = 10;
+	public static final int DEFAULT_PAGE_NUMBER = 1;
+
 	// Validate input
 	public static final int MIN_USER_NAME_LENGTH = 3;
 	public static final int MAX_USER_NAME_LENGTH = 30;
