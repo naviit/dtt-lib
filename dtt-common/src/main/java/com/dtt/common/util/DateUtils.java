@@ -32,14 +32,14 @@ public class DateUtils {
 	}
 
 	public static Date toDate(String dateString, String format) {
-		if(dateString == null || dateString.isEmpty()) return null;
+		if(StringUtils.isEmpty(dateString)) return null;
 		DateFormat df = new SimpleDateFormat(format);
-		Date date = null;
+		Date date;
 		try {
 			date = df.parse(dateString);
 		} catch (ParseException e) {
 			e.printStackTrace();
-			return null;
+			date = null;
 		}
 		return date;
 	}
@@ -48,16 +48,14 @@ public class DateUtils {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		CalendarUtils.toBeginDate(cal);
-		date = cal.getTime();
-		return date;
+		return cal.getTime();
 	}
 
 	public static Date toEndDate(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		CalendarUtils.toEndDate(cal);
-		date = cal.getTime();
-		return date;
+		return cal.getTime();
 	}
 
 }

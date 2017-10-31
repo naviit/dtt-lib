@@ -21,7 +21,7 @@ public class CalendarUtils {
 
 	private static final String TIME_FORMAT = "HH:mm:ss";
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(TIME_FORMAT);
-	
+
 	public static void toBeginDate(Calendar cal) {
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
@@ -42,7 +42,7 @@ public class CalendarUtils {
 	public static String getCurrentTime() {
 		return SDF.format(Calendar.getInstance().getTime());
 	}
-	
+
 	public static long getCurrentDateInMillis() {
 		Calendar cal = Calendar.getInstance();
 		return cal.getTimeInMillis();
@@ -55,7 +55,7 @@ public class CalendarUtils {
 	}
 
 	public static Calendar toCalendar(String dateString, String format) {
-		if(dateString == null || dateString.isEmpty()) return null;
+		if(StringUtils.isEmpty(dateString)) return null;
 		DateFormat df = new SimpleDateFormat(format);
 		Calendar cal = Calendar.getInstance();
 		try {
@@ -67,7 +67,7 @@ public class CalendarUtils {
 		}
 		return cal;
 	}
-	
+
 	public static Date getDateNearCurrentMost(List<Date> dates) {
 		final long now = Calendar.getInstance().getTimeInMillis();
 
