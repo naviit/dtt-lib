@@ -12,33 +12,33 @@ import com.dtt.common.util.JsonUtils;
  */
 public class PageRequest {
 
-	private String keyword;
-	private String fromDate;
-	private String toDate;
+  private String keyword;
+  private String fromDate;
+  private String toDate;
 
-	private int pageNumber;
-	private int pageSize;
+  private Integer pageNumber;
+  private Integer pageSize;
 
-	public PageRequest() {}
+  public PageRequest() {}
 
-	public String getKeyword() { return keyword; }
-	public void setKeyword(String keyword) { this.keyword = keyword; }
+  public String getKeyword() { return keyword; }
+  public void setKeyword(String keyword) { this.keyword = keyword; }
 
-	public String getFromDate() { return fromDate; }
-	public void setFromDate(String fromDate) { this.fromDate = fromDate; }
+  public String getFromDate() { return fromDate; }
+  public void setFromDate(String fromDate) { this.fromDate = fromDate; }
 
-	public String getToDate() { return toDate; }
-	public void setToDate(String toDate) { this.toDate = toDate; }
+  public String getToDate() { return toDate; }
+  public void setToDate(String toDate) { this.toDate = toDate; }
 
-	public int getPageNumber() { return pageNumber; }
-	public void setPageNumber(int pageNumber) { this.pageNumber = pageNumber; }
+  public Integer getPageNumber() { return pageNumber; }
+  public void setPageNumber(Integer pageNumber) { this.pageNumber = pageNumber; }
 
-	public int getPageSize() { return pageSize; }
-	public void setPageSize(int pageSize) { this.pageSize = pageSize; }
+  public Integer getPageSize() { return pageSize; }
+  public void setPageSize(Integer pageSize) { this.pageSize = pageSize; }
 
-	@Override
-	public String toString() {
-		return JsonUtils.toJson(this);
-	}
+  @Override
+  public String toString() {
+    return JsonUtils.toJson(this);
+  }
 
 }
