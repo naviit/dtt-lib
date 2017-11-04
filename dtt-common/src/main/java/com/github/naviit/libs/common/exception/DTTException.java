@@ -19,6 +19,8 @@ import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT;
 import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH;
 import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_REQUEST;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_REQUEST_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY;
 import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR;
@@ -73,6 +75,28 @@ public class DTTException extends Exception {
 
 		public UnknowException(Object data, String message) {
 			super(UNKNOWN_ERROR, message, data);
+		}
+
+	}
+
+	public static class InvalidRequestException extends DTTException {
+
+		private static final long serialVersionUID = -7459692391226129886L;
+
+		public InvalidRequestException() {
+			super(INVALID_REQUEST, INVALID_REQUEST_DESC);
+		}
+
+		public InvalidRequestException(String message) {
+			super(INVALID_REQUEST, message);
+		}
+
+		public InvalidRequestException(Object data) {
+			super(INVALID_REQUEST, INVALID_REQUEST_DESC, data);
+		}
+
+		public InvalidRequestException(Object data, String message) {
+			super(INVALID_REQUEST, message, data);
 		}
 
 	}
