@@ -1,11 +1,11 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.model.response;
+package com.github.naviit.libs.common.model.response;
 
 import java.io.Serializable;
 
-import com.dtt.common.util.JsonUtils;
+import com.github.naviit.libs.common.util.JsonUtil;
 
 /**
  * Author: Dang Thanh Tung
@@ -43,7 +43,7 @@ public class RepositoryResponse<T> implements Serializable {
 
 	@Override
 	public String toString() {
-		return JsonUtils.toJson(this);
+		return JsonUtil.toJson(this);
 	}
 
 }

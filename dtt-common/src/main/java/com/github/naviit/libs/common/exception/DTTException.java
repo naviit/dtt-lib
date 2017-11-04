@@ -1,28 +1,28 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.exception;
+package com.github.naviit.libs.common.exception;
 
-import static com.dtt.common.exception.ErrorCode.DUPLICATED_ENTITY;
-import static com.dtt.common.exception.ErrorCode.DUPLICATED_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD_DESC;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY;
-import static com.dtt.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.INVALID_ENTITY;
-import static com.dtt.common.exception.ErrorCode.INVALID_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.INVALID_FORMAT;
-import static com.dtt.common.exception.ErrorCode.INVALID_FORMAT_DESC;
-import static com.dtt.common.exception.ErrorCode.INVALID_LENGTH;
-import static com.dtt.common.exception.ErrorCode.INVALID_LENGTH_DESC;
-import static com.dtt.common.exception.ErrorCode.NOT_FOUND_ENTITY;
-import static com.dtt.common.exception.ErrorCode.NOT_FOUND_ENTITY_DESC;
-import static com.dtt.common.exception.ErrorCode.UNKNOWN_ERROR;
-import static com.dtt.common.exception.ErrorCode.UNKNOWN_ERROR_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR;
+import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR_DESC;
 
 /**
  * Author: Dang Thanh Tung

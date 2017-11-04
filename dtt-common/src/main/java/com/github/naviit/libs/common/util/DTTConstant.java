@@ -1,7 +1,7 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
 /**
  * Author: Dang Thanh Tung

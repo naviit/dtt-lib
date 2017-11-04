@@ -1,7 +1,7 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.exception;
+package com.github.naviit.libs.common.exception;
 
 /**
  * Author: Dang Thanh Tung

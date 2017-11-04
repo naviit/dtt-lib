@@ -1,13 +1,13 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.model;
+package com.github.naviit.libs.common.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dtt.common.util.DTTConstant;
-import com.dtt.common.util.JsonUtils;
+import com.github.naviit.libs.common.util.DTTConstant;
+import com.github.naviit.libs.common.util.JsonUtil;
 
 /**
  * Author: Dang Thanh Tung
@@ -73,7 +73,7 @@ public class Page<E> {
 
 	@Override
 	public String toString() {
-		return JsonUtils.toJson(this);
+		return JsonUtil.toJson(this);
 	}
 
 }

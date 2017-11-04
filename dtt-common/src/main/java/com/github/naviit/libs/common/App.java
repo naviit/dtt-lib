@@ -1,4 +1,4 @@
-package com.dtt.common;
+package com.github.naviit.libs.common;
 
 /**
  * Hello world!

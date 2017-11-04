@@ -1,6 +1,6 @@
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
-public class StringUtils {
+public class StringUtil {
 
 	public static boolean isEmpty(String...args) {
 		for (String ele : args) {

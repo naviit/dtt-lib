@@ -1,4 +1,4 @@
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
 import java.util.ArrayList;
 import java.util.List;

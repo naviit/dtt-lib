@@ -1,7 +1,7 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,7 +14,7 @@ import java.util.Date;
  * 		Email: dtt.dangthanhtung@gmail.com
  * Created: 12/07/2017
  */
-public class DateUtils {
+public class DateUtil {
 
 	public static final String ddMMyyyy = "dd/MM/yyyy";
 	public static final String ddMMyyyyHHmmss = "dd/MM/yyyy HH:mm:ss";
@@ -32,7 +32,7 @@ public class DateUtils {
 	}
 
 	public static Date toDate(String dateString, String format) {
-		if(StringUtils.isEmpty(dateString)) return null;
+		if(StringUtil.isEmpty(dateString)) return null;
 		DateFormat df = new SimpleDateFormat(format);
 		Date date;
 		try {
@@ -47,14 +47,14 @@ public class DateUtils {
 	public static Date toBeginDate(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
-		CalendarUtils.toBeginDate(cal);
+		CalendarUtil.toBeginDate(cal);
 		return cal.getTime();
 	}
 
 	public static Date toEndDate(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
-		CalendarUtils.toEndDate(cal);
+		CalendarUtil.toEndDate(cal);
 		return cal.getTime();
 	}
 

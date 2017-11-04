@@ -1,7 +1,7 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,7 +17,7 @@ import java.util.List;
  * 		Email: dtt.dangthanhtung@gmail.com
  * Created: 12/07/2017
  */
-public class CalendarUtils {
+public class CalendarUtil {
 
 	private static final String TIME_FORMAT = "HH:mm:ss";
 	private static final SimpleDateFormat SDF = new SimpleDateFormat(TIME_FORMAT);
@@ -55,7 +55,7 @@ public class CalendarUtils {
 	}
 
 	public static Calendar toCalendar(String dateString, String format) {
-		if(StringUtils.isEmpty(dateString)) return null;
+		if(StringUtil.isEmpty(dateString)) return null;
 		DateFormat df = new SimpleDateFormat(format);
 		Calendar cal = Calendar.getInstance();
 		try {

@@ -1,7 +1,7 @@
 /************************************************************************
  * Copyright 2017 by DTT - All rights reserved.                         *    
  ************************************************************************/
-package com.dtt.common.util;
+package com.github.naviit.libs.common.util;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 		Email: dtt.dangthanhtung@gmail.com
  * Created: 09/07/2017
  */
-public class JsonUtils {
+public class JsonUtil {
 
 	private static final ObjectMapper MAPPER;
 
