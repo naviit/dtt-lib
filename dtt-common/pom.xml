@@ -12,7 +12,7 @@
 	<groupId>com.github.naviit.libs</groupId>
 	<artifactId>dtt-common</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>DTT Common Library</name>
 	<url>http://maven.apache.org</url>
