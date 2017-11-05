@@ -9,7 +9,7 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<groupId>com.github.naviit.libs.common</groupId>
+	<groupId>com.github.naviit.libs</groupId>
 	<artifactId>dtt-common</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
