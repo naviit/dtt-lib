@@ -12,22 +12,43 @@
 	<groupId>com.github.naviit.libs</groupId>
 	<artifactId>dtt-common</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1</version>
 
 	<name>DTT Common Library</name>
-	<url>http://maven.apache.org</url>
+	<description>The collections of utility classes is used regularly</description>
+	<url>https://github.com/naviit/dtt-libs</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Dang Thanh Tung</name>
+			<email>dtt.dangthanhtung@gmail.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/naviit/dtt-libs.git</connection>
+		<developerConnection>scm:git:ssh://github.com:naviit/dtt-libs.git</developerConnection>
+		<url>https://github.com/naviit/dtt-libs/tree/master</url>
+	</scm>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.8.5</version>
+			<version>${fasterxml.jackson.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.8.5</version>
+			<version>${fasterxml.jackson.version}</version>
 		</dependency>
 	</dependencies>
 
