@@ -3,6 +3,9 @@
  ************************************************/
 package com.github.naviit.libs.common.util;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 /**
  * @author  Dang Thanh Tung 
  * {@literal <dtt.dangthanhtung@gmail.com>}
@@ -10,409 +13,431 @@ package com.github.naviit.libs.common.util;
  */
 public class VietnameseConverter {
 
-	public static String toTextNotMarked(String text) {
-		if (text == null) return "";
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < text.length(); i++) {
-			char c = text.charAt(i);
-			switch (c) {
-			case 'À':
-			case 'Á':
-			case 'Ả':
-			case 'Ã':
-			case 'Ạ': 
+  /**
+   * Convert text from text has accented to text no accented.
+   * 
+   * @param text
+   * @return text no accented
+   */
+  public static String toTextNoAccented(String text) {
+    if (StringUtil.isEmpty(text)) {
+      return StringUtil.EMPTY;
+    }
+    String temp = Normalizer.normalize(text, Normalizer.Form.NFD);
+    Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 
-			case 'Ă': 
-			case 'Ằ': 
-			case 'Ắ': 
-			case 'Ẳ': 
-			case 'Ẵ': 
-			case 'Ặ': 
+    /**
+     * \u0111 : đ,
+     * \u0110 : Đ
+     */
+    return pattern.matcher(temp).replaceAll("").replaceAll("\u0111", "d").replace("\u0110", "D");
+  }
 
-			case 'Â': 
-			case 'Ầ': 
-			case 'Ấ': 
-			case 'Ẩ': 
-			case 'Ẫ': 
-			case 'Ậ':
-				builder.append('A');
-				break;
+  @Deprecated
+  public static String toTextNotMarked(String text) {
+    if (text == null)
+      return "";
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < text.length(); i++) {
+      char c = text.charAt(i);
+      switch (c) {
+      case 'À':
+      case 'Á':
+      case 'Ả':
+      case 'Ã':
+      case 'Ạ':
 
-			case 'à':
-			case 'á':     
-			case 'ả':
-			case 'ã':
-			case 'ạ':
+      case 'Ă':
+      case 'Ằ':
+      case 'Ắ':
+      case 'Ẳ':
+      case 'Ẵ':
+      case 'Ặ':
 
-			case 'ă': 
-			case 'ằ': 
-			case 'ắ': 
-			case 'ẳ': 
-			case 'ẵ': 
-			case 'ặ':
+      case 'Â':
+      case 'Ầ':
+      case 'Ấ':
+      case 'Ẩ':
+      case 'Ẫ':
+      case 'Ậ':
+        builder.append('A');
+        break;
 
-			case 'â': 
-			case 'ầ': 
-			case 'ấ': 
-			case 'ẩ': 
-			case 'ẫ': 
-			case 'ậ':
-				builder.append('a');
-				break;
+      case 'à':
+      case 'á':
+      case 'ả':
+      case 'ã':
+      case 'ạ':
 
-			case 'Đ': 
-				builder.append('D');
-				break;
+      case 'ă':
+      case 'ằ':
+      case 'ắ':
+      case 'ẳ':
+      case 'ẵ':
+      case 'ặ':
 
-			case 'đ': 
-				builder.append('d');
-				break;
+      case 'â':
+      case 'ầ':
+      case 'ấ':
+      case 'ẩ':
+      case 'ẫ':
+      case 'ậ':
+        builder.append('a');
+        break;
 
-			case 'È': 
-			case 'É': 
-			case 'Ẻ': 
-			case 'Ẽ': 
-			case 'Ẹ':
+      case 'Đ':
+        builder.append('D');
+        break;
 
-			case 'Ê':
-			case 'Ề': 
-			case 'Ế': 
-			case 'Ể': 
-			case 'Ễ': 
-			case 'Ệ':
-				builder.append('E');
-				break;
+      case 'đ':
+        builder.append('d');
+        break;
 
-			case 'è': 
-			case 'é': 
-			case 'ẻ': 
-			case 'ẽ': 
-			case 'ẹ': 
+      case 'È':
+      case 'É':
+      case 'Ẻ':
+      case 'Ẽ':
+      case 'Ẹ':
 
-			case 'ê':
-			case 'ề': 
-			case 'ế': 
-			case 'ể': 
-			case 'ễ': 
-			case 'ệ':
-				builder.append('e');
-				break;
+      case 'Ê':
+      case 'Ề':
+      case 'Ế':
+      case 'Ể':
+      case 'Ễ':
+      case 'Ệ':
+        builder.append('E');
+        break;
 
-			case 'Ì': 
-			case 'Í': 
-			case 'Ỉ': 
-			case 'Ĩ': 
-			case 'Ị':
-				builder.append('I');
-				break;
+      case 'è':
+      case 'é':
+      case 'ẻ':
+      case 'ẽ':
+      case 'ẹ':
 
-			case 'ì': 
-			case 'í': 
-			case 'ỉ': 
-			case 'ĩ': 
-			case 'ị':
-				builder.append('i');
-				break;     
-			case 'Ò': 
-			case 'Ó': 
-			case 'Ỏ': 
-			case 'Õ': 
-			case 'Ọ':
+      case 'ê':
+      case 'ề':
+      case 'ế':
+      case 'ể':
+      case 'ễ':
+      case 'ệ':
+        builder.append('e');
+        break;
 
-			case 'Ô':
-			case 'Ồ': 
-			case 'Ố': 
-			case 'Ổ': 
-			case 'Ỗ': 
-			case 'Ộ':
+      case 'Ì':
+      case 'Í':
+      case 'Ỉ':
+      case 'Ĩ':
+      case 'Ị':
+        builder.append('I');
+        break;
 
-			case 'Ơ': 
-			case 'Ờ': 
-			case 'Ớ': 
-			case 'Ở': 
-			case 'Ỡ': 
-			case 'Ợ': 
-				builder.append('O');
-				break;
+      case 'ì':
+      case 'í':
+      case 'ỉ':
+      case 'ĩ':
+      case 'ị':
+        builder.append('i');
+        break;
+      case 'Ò':
+      case 'Ó':
+      case 'Ỏ':
+      case 'Õ':
+      case 'Ọ':
 
-			case 'ò': 
-			case 'ó': 
-			case 'ỏ': 
-			case 'õ': 
-			case 'ọ': 
+      case 'Ô':
+      case 'Ồ':
+      case 'Ố':
+      case 'Ổ':
+      case 'Ỗ':
+      case 'Ộ':
 
-			case 'ô':
-			case 'ồ': 
-			case 'ố': 
-			case 'ổ': 
-			case 'ỗ': 
-			case 'ộ': 
+      case 'Ơ':
+      case 'Ờ':
+      case 'Ớ':
+      case 'Ở':
+      case 'Ỡ':
+      case 'Ợ':
+        builder.append('O');
+        break;
 
-			case 'ơ': 
-			case 'ờ':
-			case 'ớ': 
-			case 'ở': 
-			case 'ỡ': 
-			case 'ợ': 
-				builder.append('o');
-				break;
+      case 'ò':
+      case 'ó':
+      case 'ỏ':
+      case 'õ':
+      case 'ọ':
 
-			case 'Ù': 
-			case 'Ú': 
-			case 'Ủ': 
-			case 'Ũ': 
-			case 'Ụ':
+      case 'ô':
+      case 'ồ':
+      case 'ố':
+      case 'ổ':
+      case 'ỗ':
+      case 'ộ':
 
-			case 'Ư': 
-			case 'Ừ': 
-			case 'Ứ': 
-			case 'Ử': 
-			case 'Ữ': 
-			case 'Ự':
-				builder.append('U');
-				break;
+      case 'ơ':
+      case 'ờ':
+      case 'ớ':
+      case 'ở':
+      case 'ỡ':
+      case 'ợ':
+        builder.append('o');
+        break;
 
-			case 'ù': 
-			case 'ú': 
-			case 'ủ':
-			case 'ũ': 
-			case 'ụ': 
+      case 'Ù':
+      case 'Ú':
+      case 'Ủ':
+      case 'Ũ':
+      case 'Ụ':
 
-			case 'ư': 
-			case 'ừ':
-			case 'ứ': 
-			case 'ử': 
-			case 'ữ': 
-			case 'ự':
-				builder.append('u');
-				break;
+      case 'Ư':
+      case 'Ừ':
+      case 'Ứ':
+      case 'Ử':
+      case 'Ữ':
+      case 'Ự':
+        builder.append('U');
+        break;
 
-			case 'Ỳ': 
-			case 'Ý': 
-			case 'Ỷ':
-			case 'Ỹ': 
-			case 'Ỵ': 
-				builder.append('Y');
-				break;
+      case 'ù':
+      case 'ú':
+      case 'ủ':
+      case 'ũ':
+      case 'ụ':
 
-			case 'ỳ': 
-			case 'ý': 
-			case 'ỷ': 
-			case 'ỹ': 
-			case 'ỵ': 
-				builder.append('y');
-				break;
+      case 'ư':
+      case 'ừ':
+      case 'ứ':
+      case 'ử':
+      case 'ữ':
+      case 'ự':
+        builder.append('u');
+        break;
 
-			default: 
-				builder.append(c);
-				break;
-			}
-		}
-		return builder.toString();
-	}
+      case 'Ỳ':
+      case 'Ý':
+      case 'Ỷ':
+      case 'Ỹ':
+      case 'Ỵ':
+        builder.append('Y');
+        break;
 
-	public static String toAlias(String text) {
-		StringBuilder builder = new StringBuilder();
-		for(int i = 0; i < text.length(); i++) {
-			char c = text.charAt(i);
-			switch (c) {
-			case 'À':
-			case 'Á':
-			case 'Ả':
-			case 'Ã':
-			case 'Ạ': 
+      case 'ỳ':
+      case 'ý':
+      case 'ỷ':
+      case 'ỹ':
+      case 'ỵ':
+        builder.append('y');
+        break;
 
-			case 'Ă': 
-			case 'Ằ': 
-			case 'Ắ': 
-			case 'Ẳ': 
-			case 'Ẵ': 
-			case 'Ặ': 
+      default:
+        builder.append(c);
+        break;
+      }
+    }
+    return builder.toString();
+  }
 
-			case 'Â': 
-			case 'Ầ': 
-			case 'Ấ': 
-			case 'Ẩ': 
-			case 'Ẫ': 
-			case 'Ậ':
-				builder.append('A');
-				break;
+  public static String toAlias(String text) {
+    StringBuilder builder = new StringBuilder();
+    for (int i = 0; i < text.length(); i++) {
+      char c = text.charAt(i);
+      switch (c) {
+      case 'À':
+      case 'Á':
+      case 'Ả':
+      case 'Ã':
+      case 'Ạ':
 
-			case 'à':
-			case 'á':     
-			case 'ả':
-			case 'ã':
-			case 'ạ':
+      case 'Ă':
+      case 'Ằ':
+      case 'Ắ':
+      case 'Ẳ':
+      case 'Ẵ':
+      case 'Ặ':
 
-			case 'ă': 
-			case 'ằ': 
-			case 'ắ': 
-			case 'ẳ': 
-			case 'ẵ': 
-			case 'ặ':
+      case 'Â':
+      case 'Ầ':
+      case 'Ấ':
+      case 'Ẩ':
+      case 'Ẫ':
+      case 'Ậ':
+        builder.append('A');
+        break;
 
-			case 'â': 
-			case 'ầ': 
-			case 'ấ': 
-			case 'ẩ': 
-			case 'ẫ': 
-			case 'ậ':
-				builder.append('a');
-				break;
+      case 'à':
+      case 'á':
+      case 'ả':
+      case 'ã':
+      case 'ạ':
 
-			case 'Đ': 
-				builder.append('D');
-				break;
+      case 'ă':
+      case 'ằ':
+      case 'ắ':
+      case 'ẳ':
+      case 'ẵ':
+      case 'ặ':
 
-			case 'đ': 
-				builder.append('d');
-				break;
+      case 'â':
+      case 'ầ':
+      case 'ấ':
+      case 'ẩ':
+      case 'ẫ':
+      case 'ậ':
+        builder.append('a');
+        break;
 
-			case 'È': 
-			case 'É': 
-			case 'Ẻ': 
-			case 'Ẽ': 
-			case 'Ẹ':
+      case 'Đ':
+        builder.append('D');
+        break;
 
-			case 'Ê':
-			case 'Ề': 
-			case 'Ế': 
-			case 'Ể': 
-			case 'Ễ': 
-			case 'Ệ':
-				builder.append('E');
-				break;
+      case 'đ':
+        builder.append('d');
+        break;
 
-			case 'è': 
-			case 'é': 
-			case 'ẻ': 
-			case 'ẽ': 
-			case 'ẹ': 
+      case 'È':
+      case 'É':
+      case 'Ẻ':
+      case 'Ẽ':
+      case 'Ẹ':
 
-			case 'ê':
-			case 'ề': 
-			case 'ế': 
-			case 'ể': 
-			case 'ễ': 
-			case 'ệ':
-				builder.append('e');
-				break;
+      case 'Ê':
+      case 'Ề':
+      case 'Ế':
+      case 'Ể':
+      case 'Ễ':
+      case 'Ệ':
+        builder.append('E');
+        break;
 
-			case 'Ì': 
-			case 'Í': 
-			case 'Ỉ': 
-			case 'Ĩ': 
-			case 'Ị':
-				builder.append('I');
-				break;  
+      case 'è':
+      case 'é':
+      case 'ẻ':
+      case 'ẽ':
+      case 'ẹ':
 
-			case 'ì': 
-			case 'í': 
-			case 'ỉ': 
-			case 'ĩ': 
-			case 'ị':
-				builder.append('i');
-				break;     
-			case 'Ò': 
-			case 'Ó': 
-			case 'Ỏ': 
-			case 'Õ': 
-			case 'Ọ':
+      case 'ê':
+      case 'ề':
+      case 'ế':
+      case 'ể':
+      case 'ễ':
+      case 'ệ':
+        builder.append('e');
+        break;
 
-			case 'Ô':
-			case 'Ồ': 
-			case 'Ố': 
-			case 'Ổ': 
-			case 'Ỗ': 
-			case 'Ộ':
+      case 'Ì':
+      case 'Í':
+      case 'Ỉ':
+      case 'Ĩ':
+      case 'Ị':
+        builder.append('I');
+        break;
 
-			case 'Ơ': 
-			case 'Ờ': 
-			case 'Ớ': 
-			case 'Ở': 
-			case 'Ỡ': 
-			case 'Ợ': 
-				builder.append('O');
-				break;
+      case 'ì':
+      case 'í':
+      case 'ỉ':
+      case 'ĩ':
+      case 'ị':
+        builder.append('i');
+        break;
+      case 'Ò':
+      case 'Ó':
+      case 'Ỏ':
+      case 'Õ':
+      case 'Ọ':
 
-			case 'ò': 
-			case 'ó': 
-			case 'ỏ': 
-			case 'õ': 
-			case 'ọ': 
+      case 'Ô':
+      case 'Ồ':
+      case 'Ố':
+      case 'Ổ':
+      case 'Ỗ':
+      case 'Ộ':
 
-			case 'ô':
-			case 'ồ': 
-			case 'ố': 
-			case 'ổ': 
-			case 'ỗ': 
-			case 'ộ': 
+      case 'Ơ':
+      case 'Ờ':
+      case 'Ớ':
+      case 'Ở':
+      case 'Ỡ':
+      case 'Ợ':
+        builder.append('O');
+        break;
 
-			case 'ơ': 
-			case 'ờ':
-			case 'ớ': 
-			case 'ở': 
-			case 'ỡ': 
-			case 'ợ': 
-				builder.append('o');
-				break;
+      case 'ò':
+      case 'ó':
+      case 'ỏ':
+      case 'õ':
+      case 'ọ':
 
-			case 'Ù': 
-			case 'Ú': 
-			case 'Ủ': 
-			case 'Ũ': 
-			case 'Ụ':
+      case 'ô':
+      case 'ồ':
+      case 'ố':
+      case 'ổ':
+      case 'ỗ':
+      case 'ộ':
 
-			case 'Ư': 
-			case 'Ừ': 
-			case 'Ứ': 
-			case 'Ử': 
-			case 'Ữ': 
-			case 'Ự':
-				builder.append('U');
-				break;
+      case 'ơ':
+      case 'ờ':
+      case 'ớ':
+      case 'ở':
+      case 'ỡ':
+      case 'ợ':
+        builder.append('o');
+        break;
 
-			case 'ù': 
-			case 'ú': 
-			case 'ủ':
-			case 'ũ': 
-			case 'ụ': 
+      case 'Ù':
+      case 'Ú':
+      case 'Ủ':
+      case 'Ũ':
+      case 'Ụ':
 
-			case 'ư': 
-			case 'ừ':
-			case 'ứ': 
-			case 'ử': 
-			case 'ữ': 
-			case 'ự':
-				builder.append('u');
-				break;
+      case 'Ư':
+      case 'Ừ':
+      case 'Ứ':
+      case 'Ử':
+      case 'Ữ':
+      case 'Ự':
+        builder.append('U');
+        break;
 
-			case 'Ỳ': 
-			case 'Ý': 
-			case 'Ỷ':
-			case 'Ỹ': 
-			case 'Ỵ': 
-				builder.append('Y');
-				break;
+      case 'ù':
+      case 'ú':
+      case 'ủ':
+      case 'ũ':
+      case 'ụ':
 
-			case 'ỳ': 
-			case 'ý': 
-			case 'ỷ': 
-			case 'ỹ': 
-			case 'ỵ': 
-				builder.append('y');
-				break;
+      case 'ư':
+      case 'ừ':
+      case 'ứ':
+      case 'ử':
+      case 'ữ':
+      case 'ự':
+        builder.append('u');
+        break;
 
-			default:
-				if(Character.isLetterOrDigit(c)) {
-					builder.append(c);
-				}  else {
-					builder.append('-');
-				}
-				break;
-			}
-		}
-		return builder.toString();
-	}
+      case 'Ỳ':
+      case 'Ý':
+      case 'Ỷ':
+      case 'Ỹ':
+      case 'Ỵ':
+        builder.append('Y');
+        break;
+
+      case 'ỳ':
+      case 'ý':
+      case 'ỷ':
+      case 'ỹ':
+      case 'ỵ':
+        builder.append('y');
+        break;
+
+      default:
+        if (Character.isLetterOrDigit(c)) {
+          builder.append(c);
+        } else {
+          builder.append('-');
+        }
+        break;
+      }
+    }
+    return builder.toString();
+  }
 
 }

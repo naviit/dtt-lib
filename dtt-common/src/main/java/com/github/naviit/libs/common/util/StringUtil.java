@@ -9,6 +9,9 @@ package com.github.naviit.libs.common.util;
  * @since   28/12/2017
  */
 public class StringUtil {
+  
+  public static final String EMPTY = "";
+  public static final String SPACE = " ";
 
   public static boolean isEmpty(String...args) {
     for (String ele : args) {

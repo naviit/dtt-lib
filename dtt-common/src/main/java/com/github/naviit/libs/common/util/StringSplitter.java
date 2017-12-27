@@ -4,6 +4,7 @@
 package com.github.naviit.libs.common.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,6 +13,14 @@ import java.util.List;
  * @since   28/12/2017
  */
 public class StringSplitter {
+  
+  public static List<String> splitBySpace(String value) {
+    if (StringUtil.isEmpty(value)) {
+      return new ArrayList<String>();
+    }
+    String[] lstChar = value.split(StringUtil.SPACE);
+    return Arrays.asList(lstChar);
+  }
 
   public static List<String> toListBySpace(String value) {
     if (value == null) return new ArrayList<String>(0);
@@ -39,11 +48,6 @@ public class StringSplitter {
   public static String[] toArrayBySpace(String value){  
     List<String> list = toListBySpace(value);
     return list.toArray(new String[list.size()]);
-  }
-
-  public static void main(String[] args) {
-    List<String> test = toListBySpace("Tung is hand Some");
-    System.out.println(test);
   }
 
 }

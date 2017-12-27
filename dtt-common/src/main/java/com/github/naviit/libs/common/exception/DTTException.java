@@ -3,26 +3,26 @@
  ************************************************/
 package com.github.naviit.libs.common.exception;
 
-import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_ENTITY_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_ENTITY_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_ENTITY_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_MODIFY_ENTITY_FIELD_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_ENTITY_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_ENTITY_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_LENGTH_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_REQUEST;
-import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_REQUEST_DESC;
-import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY;
-import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_ENTITY_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_CREATE_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_DELETE_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.ERROR_WHEN_UPDATE_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.EXPIRED_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.EXPIRED_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.INVALID_FORMAT_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_FOUND_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_MATCH_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.NOT_MATCH_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.NO_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.NO_DATA_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR_DESC;
 
@@ -33,270 +33,169 @@ import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR_DE
  */
 public class DTTException extends Exception {
 
-	private static final long serialVersionUID = 4274408760692076756L;
+  private static final long serialVersionUID = 4274408760692076756L;
 
-	private int errorCode;
-	private Object data;
+  private int code;
 
-	public DTTException(int code) {
-		this.errorCode = code;
-	}
+  public DTTException(int code) {
+    this.code = code;
+  }
 
-	public DTTException(int code, String message) {
-		super(message);
-		this.errorCode = code;
-	}
+  public DTTException(int code, String message) {
+    super(message);
+    this.code = code;
+  }
 
-	public DTTException(int code, String message, Object data) {
-		super(data + ": " + message);
-		this.errorCode = code;
-		this.data = data;
-	}
+  public int getCode() { return code; }
 
-	public int getErrorCode() { return errorCode; }
+  public static class UnknowException extends DTTException {
 
-	public Object getData() { return data; }
+    private static final long serialVersionUID = 7380060115304231242L;
 
-	public static class UnknowException extends DTTException {
+    public UnknowException() {
+      super(UNKNOWN_ERROR, UNKNOWN_ERROR_DESC);
+    }
 
-		private static final long serialVersionUID = 7380060115304231242L;
+  }
 
-		public UnknowException() {
-			super(UNKNOWN_ERROR, UNKNOWN_ERROR_DESC);
-		}
+  public static class NotFoundDataException extends DTTException {
 
-		public UnknowException(String message) {
-			super(UNKNOWN_ERROR, message);
-		}
+    private static final long serialVersionUID = -6143588956116625927L;
 
-		public UnknowException(Object data) {
-			super(UNKNOWN_ERROR, UNKNOWN_ERROR_DESC, data);
-		}
+    public NotFoundDataException() {
+      super(NOT_FOUND_DATA, NOT_FOUND_DATA_DESC);
+    }
 
-		public UnknowException(Object data, String message) {
-			super(UNKNOWN_ERROR, message, data);
-		}
+    public NotFoundDataException(String message) {
+      super(NOT_FOUND_DATA, message);
+    }
 
-	}
+  }
 
-	public static class InvalidRequestException extends DTTException {
+  public static class DuplicatedDataException extends DTTException {
 
-		private static final long serialVersionUID = -7459692391226129886L;
+    private static final long serialVersionUID = -8157631594355700808L;
 
-		public InvalidRequestException() {
-			super(INVALID_REQUEST, INVALID_REQUEST_DESC);
-		}
+    public DuplicatedDataException() {
+      super(DUPLICATED_DATA, DUPLICATED_DATA_DESC);
+    }
 
-		public InvalidRequestException(String message) {
-			super(INVALID_REQUEST, message);
-		}
+    public DuplicatedDataException(String message) {
+      super(DUPLICATED_DATA, message);
+    }
 
-		public InvalidRequestException(Object data) {
-			super(INVALID_REQUEST, INVALID_REQUEST_DESC, data);
-		}
+  }
 
-		public InvalidRequestException(Object data, String message) {
-			super(INVALID_REQUEST, message, data);
-		}
+  public static class ErrorCreateDataException extends DTTException {
 
-	}
+    private static final long serialVersionUID = 8588385436497619088L;
 
-	public static class NotFoundEntityException extends DTTException {
+    public ErrorCreateDataException() {
+      super(ERROR_WHEN_CREATE_DATA, ERROR_WHEN_CREATE_DATA_DESC);
+    }
 
-		private static final long serialVersionUID = -6143588956116625927L;
+    public ErrorCreateDataException(String message) {
+      super(ERROR_WHEN_CREATE_DATA, message);
+    }
 
-		public NotFoundEntityException() {
-			super(NOT_FOUND_ENTITY, NOT_FOUND_ENTITY_DESC);
-		}
+  }
 
-		public NotFoundEntityException(String message) {
-			super(NOT_FOUND_ENTITY, message);
-		}
+  public static class ErrorUpdateDataException extends DTTException {
 
-		public NotFoundEntityException(Object data) {
-			super(NOT_FOUND_ENTITY, NOT_FOUND_ENTITY_DESC, data);
-		}
+    private static final long serialVersionUID = 1043089496804826231L;
 
-		public NotFoundEntityException(Object data, String message) {
-			super(NOT_FOUND_ENTITY, message, data);
-		}
+    public ErrorUpdateDataException() {
+      super(ERROR_WHEN_UPDATE_DATA, ERROR_WHEN_UPDATE_DATA_DESC);
+    }
 
-	}
+    public ErrorUpdateDataException(String message) {
+      super(ERROR_WHEN_UPDATE_DATA, message);
+    }
 
-	public static class DuplicatedEntityException extends DTTException {
+  }
 
-		private static final long serialVersionUID = -8157631594355700808L;
+  public static class ErrorDeleteDataException extends DTTException {
 
-		public DuplicatedEntityException() {
-			super(DUPLICATED_ENTITY, DUPLICATED_ENTITY_DESC);
-		}
+    private static final long serialVersionUID = -3676318400628112602L;
 
-		public DuplicatedEntityException(String message) {
-			super(DUPLICATED_ENTITY, message);
-		}
+    public ErrorDeleteDataException() {
+      super(ERROR_WHEN_DELETE_DATA, ERROR_WHEN_DELETE_DATA_DESC);
+    }
 
-		public DuplicatedEntityException(Object data) {
-			super(DUPLICATED_ENTITY, DUPLICATED_ENTITY_DESC, data);
-		}
+    public ErrorDeleteDataException(String message) {
+      super(ERROR_WHEN_DELETE_DATA, message);
+    }
 
-		public DuplicatedEntityException(Object data, String message) {
-			super(DUPLICATED_ENTITY, message, data);
-		}
+  }
 
-	}
+  public static class NoDataException extends DTTException {
 
-	public static class InvalidDataException extends DTTException {
+    private static final long serialVersionUID = -384483326556174188L;
 
-		private static final long serialVersionUID = -8260869106253703510L;
+    public NoDataException() {
+      super(NO_DATA, NO_DATA_DESC);
+    }
 
-		public InvalidDataException() {
-			super(INVALID_ENTITY, INVALID_ENTITY_DESC);
-		}
+    public NoDataException(String message) {
+      super(NO_DATA, message);
+    }
 
-		public InvalidDataException(String message) {
-			super(INVALID_ENTITY, message);
-		}
+  }
 
-		public InvalidDataException(Object data) {
-			super(INVALID_ENTITY, INVALID_ENTITY_DESC, data);
-		}
+  public static class InvalidDataException extends DTTException {
 
-		public InvalidDataException(Object data, String message) {
-			super(INVALID_ENTITY, message, data);
-		}
+    private static final long serialVersionUID = 3548366276454776739L;
 
-	}
+    public InvalidDataException() {
+      super(INVALID_DATA, INVALID_DATA_DESC);
+    }
 
-	public static class InvalidFormatException extends DTTException {
+    public InvalidDataException(String message) {
+      super(INVALID_DATA, message);
+    }
 
-		private static final long serialVersionUID = 7026796137445277042L;
+  }
 
-		public InvalidFormatException() {
-			super(INVALID_FORMAT, INVALID_FORMAT_DESC);
-		}
+  public static class InvalidFormatDataException extends DTTException {
 
-		public InvalidFormatException(String message) {
-			super(INVALID_FORMAT, message);
-		}
+    private static final long serialVersionUID = -6894658813607627859L;
 
-		public InvalidFormatException(Object data) {
-			super(INVALID_FORMAT, INVALID_FORMAT_DESC, data);
-		}
+    public InvalidFormatDataException() {
+      super(INVALID_FORMAT_DATA, INVALID_FORMAT_DATA_DESC);
+    }
 
-		public InvalidFormatException(Object data, String message) {
-			super(INVALID_FORMAT, message, data);
-		}
+    public InvalidFormatDataException(String message) {
+      super(INVALID_FORMAT_DATA, message);
+    }
 
-	}
+  }
 
-	public static class InvalidLengthException extends DTTException {
+  public static class NotMatchDataException extends DTTException {
 
-		private static final long serialVersionUID = -8114344518979503052L;
+    private static final long serialVersionUID = -2203711591734114431L;
 
-		public InvalidLengthException() {
-			super(INVALID_LENGTH, INVALID_LENGTH_DESC);
-		}
+    public NotMatchDataException() {
+      super(NOT_MATCH_DATA, NOT_MATCH_DATA_DESC);
+    }
 
-		public InvalidLengthException(String message) {
-			super(INVALID_LENGTH, message);
-		}
+    public NotMatchDataException(String message) {
+      super(NOT_MATCH_DATA, message);
+    }
 
-		public InvalidLengthException(Object data) {
-			super(INVALID_LENGTH, INVALID_LENGTH_DESC, data);
-		}
+  }
 
-		public InvalidLengthException(Object data, String message) {
-			super(INVALID_LENGTH, message, data);
-		}
+  public static class ExpiredDataException extends DTTException {
 
-	}
+    private static final long serialVersionUID = -3436143130378185928L;
 
-	public static class ErrorCreationException extends DTTException {
+    public ExpiredDataException() {
+      super(EXPIRED_DATA, EXPIRED_DATA_DESC);
+    }
 
-		private static final long serialVersionUID = 8588385436497619088L;
+    public ExpiredDataException(String message) {
+      super(EXPIRED_DATA, message);
+    }
 
-		public ErrorCreationException() {
-			super(ERROR_WHEN_CREATE_ENTITY, ERROR_WHEN_CREATE_ENTITY_DESC);
-		}
-
-		public ErrorCreationException(String message) {
-			super(ERROR_WHEN_CREATE_ENTITY, message);
-		}
-
-		public ErrorCreationException(Object data) {
-			super(ERROR_WHEN_CREATE_ENTITY, ERROR_WHEN_CREATE_ENTITY_DESC, data);
-		}
-
-		public ErrorCreationException(Object data, String message) {
-			super(ERROR_WHEN_CREATE_ENTITY, message, data);
-		}
-
-	}
-
-	public static class ErrorUpdateException extends DTTException {
-
-		private static final long serialVersionUID = 1043089496804826231L;
-
-		public ErrorUpdateException() {
-			super(ERROR_WHEN_UPDATE_ENTITY, ERROR_WHEN_UPDATE_ENTITY_DESC);
-		}
-
-		public ErrorUpdateException(String message) {
-			super(ERROR_WHEN_UPDATE_ENTITY, message);
-		}
-
-		public ErrorUpdateException(Object data) {
-			super(ERROR_WHEN_UPDATE_ENTITY, ERROR_WHEN_UPDATE_ENTITY_DESC, data);
-		}
-
-		public ErrorUpdateException(Object data, String message) {
-			super(ERROR_WHEN_UPDATE_ENTITY, message, data);
-		}
-
-	}
-
-	public static class ErrorModificationException extends DTTException {
-
-		private static final long serialVersionUID = 5690696523821383243L;
-
-		public ErrorModificationException() {
-			super(ERROR_WHEN_MODIFY_ENTITY_FIELD, ERROR_WHEN_MODIFY_ENTITY_FIELD_DESC);
-		}
-
-		public ErrorModificationException(String message) {
-			super(ERROR_WHEN_MODIFY_ENTITY_FIELD, message);
-		}
-
-		public ErrorModificationException(Object data) {
-			super(ERROR_WHEN_MODIFY_ENTITY_FIELD, ERROR_WHEN_MODIFY_ENTITY_FIELD_DESC, data);
-		}
-
-		public ErrorModificationException(Object data, String message) {
-			super(ERROR_WHEN_MODIFY_ENTITY_FIELD, message, data);
-		}
-
-	}
-
-	public static class ErrorDeleteException extends DTTException {
-
-		private static final long serialVersionUID = -3676318400628112602L;
-
-		public ErrorDeleteException() {
-			super(ERROR_WHEN_DELETE_ENTITY, ERROR_WHEN_DELETE_ENTITY_DESC);
-		}
-
-		public ErrorDeleteException(String message) {
-			super(ERROR_WHEN_DELETE_ENTITY, message);
-		}
-
-		public ErrorDeleteException(Object data) {
-			super(ERROR_WHEN_DELETE_ENTITY, ERROR_WHEN_DELETE_ENTITY_DESC, data);
-		}
-
-		public ErrorDeleteException(Object data, String message) {
-			super(ERROR_WHEN_DELETE_ENTITY, message, data);
-		}
-
-	}
+  }
 
 }
