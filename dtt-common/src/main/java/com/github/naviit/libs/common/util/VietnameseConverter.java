@@ -1,5 +1,13 @@
+/************************************************
+ * Copyright 2017 by DTT - All rights reserved. *    
+ ************************************************/
 package com.github.naviit.libs.common.util;
 
+/**
+ * @author  Dang Thanh Tung 
+ * {@literal <dtt.dangthanhtung@gmail.com>}
+ * @since   28/12/2017
+ */
 public class VietnameseConverter {
 
 	public static String toTextNotMarked(String text) {

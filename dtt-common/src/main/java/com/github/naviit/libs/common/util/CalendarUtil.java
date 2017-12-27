@@ -1,6 +1,6 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
+/************************************************
+ * Copyright 2017 by DTT - All rights reserved. *    
+ ************************************************/
 package com.github.naviit.libs.common.util;
 
 import java.text.DateFormat;
@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created: 12/07/2017
+ * @author  Dang Thanh Tung 
+ * {@literal <dtt.dangthanhtung@gmail.com>}
+ * @since   12/07/2017
  */
 public class CalendarUtil {
 

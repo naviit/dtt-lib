@@ -1,6 +1,6 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
+/************************************************
+ * Copyright 2017 by DTT - All rights reserved. *    
+ ************************************************/
 package com.github.naviit.libs.common.exception;
 
 import static com.github.naviit.libs.common.exception.ErrorCode.DUPLICATED_ENTITY;
@@ -27,9 +27,9 @@ import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR_DESC;
 
 /**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created: 05/09/2017
+ * @author  Dang Thanh Tung 
+ * {@literal <dtt.dangthanhtung@gmail.com>}
+ * @since   05/09/2017
  */
 public class DTTException extends Exception {
 

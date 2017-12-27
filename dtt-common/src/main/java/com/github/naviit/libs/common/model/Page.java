@@ -1,6 +1,6 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
+/************************************************
+ * Copyright 2017 by DTT - All rights reserved. *    
+ ************************************************/
 package com.github.naviit.libs.common.model;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import com.github.naviit.libs.common.util.DTTConstant;
 import com.github.naviit.libs.common.util.JsonUtil;
 
 /**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created: 09/07/2017
+ * @author  Dang Thanh Tung 
+ * {@literal <dtt.dangthanhtung@gmail.com>}
+ * @since   09/07/2017
  */
 public class Page<E> {
 

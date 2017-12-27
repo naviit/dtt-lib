@@ -1,6 +1,6 @@
-/************************************************************************
- * Copyright 2017 by DTT - All rights reserved.                         *    
- ************************************************************************/
+/************************************************
+ * Copyright 2017 by DTT - All rights reserved. *    
+ ************************************************/
 package com.github.naviit.libs.common.util;
 
 import java.util.Map;
@@ -13,46 +13,46 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Author: Dang Thanh Tung
- * 		Email: dtt.dangthanhtung@gmail.com
- * Created: 09/07/2017
+ * @author  Dang Thanh Tung 
+ * {@literal <dtt.dangthanhtung@gmail.com>}
+ * @since   28/12/2017
  */
 public class JsonUtil {
 
-	private static final ObjectMapper MAPPER;
+  private static final ObjectMapper MAPPER;
 
-	static {
-		MAPPER = new ObjectMapper();
-		MAPPER.setSerializationInclusion(Include.NON_NULL);
-	}
+  static {
+    MAPPER = new ObjectMapper();
+    MAPPER.setSerializationInclusion(Include.NON_NULL);
+  }
 
-	public static <O> String toJson(O o) {
-		try {
-			return MAPPER.writeValueAsString(o);
-		} catch (Exception e) {
-			return e.getMessage();
-		}
-	}
+  public static <O> String toJson(O o) {
+    try {
+      return MAPPER.writeValueAsString(o);
+    } catch (Exception e) {
+      return e.getMessage();
+    }
+  }
 
-	public static <T> T toObject(String jsonStr, final Class<T> clazz) {
-		try {
-			return MAPPER.readValue(jsonStr, clazz);
-		} catch (Exception e) {
-			return null;
-		}
-	}
+  public static <T> T toObject(String jsonStr, final Class<T> clazz) {
+    try {
+      return MAPPER.readValue(jsonStr, clazz);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
-	public static <T> T toObject(String jsonStr, final TypeReference<T> reference) {
-		try {
-			return MAPPER.readValue(jsonStr, reference);
-		} catch (Exception e) {
-			return null;
-		}
-	}
+  public static <T> T toObject(String jsonStr, final TypeReference<T> reference) {
+    try {
+      return MAPPER.readValue(jsonStr, reference);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
-	public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
-		Map<Object, Boolean> map = new ConcurrentHashMap<>();
-		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
-	}
+  public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+    Map<Object, Boolean> map = new ConcurrentHashMap<>();
+    return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+  }
 
 }
