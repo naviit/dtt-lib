@@ -1,19 +1,14 @@
 /************************************************
- * Copyright 2017 by DTT - All rights reserved. *    
+ * Copyright 2018 by DTT - All rights reserved. *    
  ************************************************/
 package com.github.naviit.libs.common.util;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
-/**
- * @author  Dang Thanh Tung 
- * {@literal <dtt.dangthanhtung@gmail.com>}
- * @since   28/12/2017
- */
 public class VietnameseConverter {
 
-  /**
+  /*
    * Convert text from text has accented to text no accented.
    * 
    * @param text
@@ -26,7 +21,7 @@ public class VietnameseConverter {
     String temp = Normalizer.normalize(text, Normalizer.Form.NFD);
     Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 
-    /**
+    /*
      * \u0111 : đ,
      * \u0110 : Đ
      */

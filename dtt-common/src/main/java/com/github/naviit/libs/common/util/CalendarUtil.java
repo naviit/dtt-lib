@@ -1,5 +1,5 @@
 /************************************************
- * Copyright 2017 by DTT - All rights reserved. *    
+ * Copyright 2018 by DTT - All rights reserved. *    
  ************************************************/
 package com.github.naviit.libs.common.util;
 
@@ -11,15 +11,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import com.github.naviit.libs.common.DateTimeConstant;
+
 /**
  * @author  Dang Thanh Tung 
  * {@literal <dtt.dangthanhtung@gmail.com>}
  * @since   12/07/2017
  */
 public class CalendarUtil {
-
-  private static final String TIME_FORMAT = "HH:mm:ss";
-  private static final SimpleDateFormat SDF = new SimpleDateFormat(TIME_FORMAT);
 
   public static void toBeginDate(Calendar cal) {
     cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -35,22 +34,18 @@ public class CalendarUtil {
     cal.set(Calendar.MILLISECOND, 999);
   }
 
-  /**
-   * Get current time with format HH:mm:ss
-   */
-  public static String getCurrentTime() {
-    return SDF.format(Calendar.getInstance().getTime());
+  public static Date toBeginDate(Date date) {
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    CalendarUtil.toBeginDate(cal);
+    return cal.getTime();
   }
 
-  public static long getCurrentDateInMillis() {
+  public static Date toEndDate(Date date) {
     Calendar cal = Calendar.getInstance();
-    return cal.getTimeInMillis();
-  }
-
-  public static long getBeginOfCurrentDateInMillis() {
-    Calendar cal = Calendar.getInstance();
-    toBeginDate(cal);
-    return cal.getTimeInMillis();
+    cal.setTime(date);
+    CalendarUtil.toEndDate(cal);
+    return cal.getTime();
   }
 
   public static Calendar toCalendar(String dateString, String format) {
@@ -66,6 +61,22 @@ public class CalendarUtil {
       e.printStackTrace();
       return null;
     }
+  }
+
+  public static String getCurrentTime() {
+    SimpleDateFormat sdf = new SimpleDateFormat(DateTimeConstant.HHmmss);
+    return sdf.format(Calendar.getInstance().getTime());
+  }
+
+  public static long getCurrentTimeInMillis() {
+    Calendar cal = Calendar.getInstance();
+    return cal.getTimeInMillis();
+  }
+
+  public static long getBeginOfCurrentTimeInMillis() {
+    Calendar cal = Calendar.getInstance();
+    toBeginDate(cal);
+    return cal.getTimeInMillis();
   }
 
   public static Date getDateNearCurrentMost(List<Date> dates) {
@@ -101,22 +112,22 @@ public class CalendarUtil {
   }
 
   public static int getDayOfWeek(long timeInMiliseconds) {
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTimeInMillis(timeInMiliseconds);
-    return calendar.get(Calendar.DAY_OF_WEEK);
+    Calendar cal = Calendar.getInstance();
+    cal.setTimeInMillis(timeInMiliseconds);
+    return cal.get(Calendar.DAY_OF_WEEK);
   }
 
   public static String getLastDayOfMonth(String format) {
     Date today = new Date();  
 
-    Calendar calendar = Calendar.getInstance();  
-    calendar.setTime(today);  
+    Calendar cal = Calendar.getInstance();  
+    cal.setTime(today);  
 
-    calendar.add(Calendar.MONTH, 1);  
-    calendar.set(Calendar.DAY_OF_MONTH, 1);  
-    calendar.add(Calendar.DATE, -1);  
+    cal.add(Calendar.MONTH, 1);  
+    cal.set(Calendar.DAY_OF_MONTH, 1);  
+    cal.add(Calendar.DATE, -1);  
 
-    Long lastDayOfMonth = calendar.getTimeInMillis();
+    Long lastDayOfMonth = cal.getTimeInMillis();
     return DateUtil.toDateString(lastDayOfMonth, format);
   }
 

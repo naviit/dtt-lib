@@ -5,8 +5,8 @@ package com.github.naviit.libs.common.validator;
 
 import java.util.Date;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import com.github.naviit.libs.common.CommonConstant;
 import com.github.naviit.libs.common.exception.DTTException;
 import com.github.naviit.libs.common.util.DateUtil;
 import com.github.naviit.libs.common.util.StringUtil;
@@ -17,9 +17,6 @@ import com.github.naviit.libs.common.util.StringUtil;
  * @since   28/12/2017
  */
 public abstract class InputValidator {
-
-  private final static Pattern EMAIL_PATTERN = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-      + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
   public void validateEmptyField(String value) throws DTTException {
     if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
@@ -121,14 +118,14 @@ public abstract class InputValidator {
 
   public void validateEmailField(String value) throws DTTException {
     if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
-    Matcher matcher = EMAIL_PATTERN.matcher(value.trim());
+    Matcher matcher = CommonConstant.EMAIL_PATTERN.matcher(value.trim());
     if(matcher.matches()) return;
     throw new DTTException.InvalidFormatDataException();
   }
 
   public void validateEmailField(String value, String message) throws DTTException {
     if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException(message);
-    Matcher matcher = EMAIL_PATTERN.matcher(value.trim());
+    Matcher matcher = CommonConstant.EMAIL_PATTERN.matcher(value.trim());
     if(matcher.matches()) return;
     throw new DTTException.InvalidFormatDataException(message);
   }

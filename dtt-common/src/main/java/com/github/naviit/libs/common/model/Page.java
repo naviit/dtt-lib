@@ -6,7 +6,7 @@ package com.github.naviit.libs.common.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.naviit.libs.common.util.DTTConstant;
+import com.github.naviit.libs.common.CommonConstant;
 import com.github.naviit.libs.common.util.JsonUtil;
 
 /**
@@ -26,7 +26,7 @@ public class Page<E> {
   private long time;
 
   public Page() {
-    this.pageItems = new ArrayList<E>(DTTConstant.DEFAULT_PAGE_SIZE);
+    this.pageItems = new ArrayList<E>(CommonConstant.DEFAULT_PAGE_SIZE);
   }
 
   public Page(int pageNumber, int pageSize) {

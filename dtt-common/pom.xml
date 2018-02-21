@@ -4,17 +4,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 			http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>com.github.naviit.libs</groupId>
-		<artifactId>dtt-libs</artifactId>
-		<version>1.0.1</version>
-	</parent>
-
+	
 	<groupId>com.github.naviit.libs</groupId>
 	<artifactId>dtt-common</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 
 	<name>DTT Common Library</name>
 	<description>The collections of utility classes is used regularly</description>
@@ -40,7 +34,25 @@
 		<url>https://github.com/naviit/dtt-libs/tree/master</url>
 	</scm>
 
+	<properties>
+		<java.version>1.8</java.version>
+		<spring.version>4.3.12.RELEASE</spring.version>
+		<fasterxml.jackson.version>2.8.5</fasterxml.jackson.version>
+		
+		<!-- Deploying to Sonatype OSSRH -->
+		<nexus.staging.maven.plugin.version>1.6.8</nexus.staging.maven.plugin.version>
+		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<maven.javadoc.plugin.version>2.10.4</maven.javadoc.plugin.version>
+		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
+	</properties>
+	
 	<dependencies>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+				
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -53,7 +65,19 @@
 			<version>${fasterxml.jackson.version}</version>
 		</dependency>
 	</dependencies>
-
+	
+	<!-- Deploying to Sonatype OSSRH -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	
 	<build>
 		<finalName>dtt-common</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -64,5 +88,104 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<optimize>true</optimize>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20.1</version>
+				<configuration>
+					<skip>true</skip>
+					<skipTests>true</skipTests>
+					<useFile>false</useFile>
+					<forkMode>pertest</forkMode>
+					<argLine>-Xmx2524m</argLine>
+					<testFailureIgnore>false</testFailureIgnore>
+					<includes>
+						<include implementation="java.lang.String">**/${test.classes}*.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			
+			<!-- Deploying to Sonatype OSSRH -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>${nexus.staging.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>sonatype-nexus</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven.javadoc.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>${maven.gpg.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

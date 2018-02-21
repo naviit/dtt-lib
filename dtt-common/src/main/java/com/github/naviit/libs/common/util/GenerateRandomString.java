@@ -1,5 +1,5 @@
 /************************************************
- * Copyright 2017 by DTT - All rights reserved. *    
+ * Copyright 2018 by DTT - All rights reserved. *    
  ************************************************/
 package com.github.naviit.libs.common.util;
 
@@ -7,11 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
 
-/**
- * @author  Dang Thanh Tung 
- * {@literal <dtt.dangthanhtung@gmail.com>}
- * @since   28/12/2017
- */
+import com.github.naviit.libs.common.DateTimeConstant;
+
 public class GenerateRandomString {
 
   private static final char[] VALUES = {'a','b','c','d','e','f','g','h','i','j',
@@ -35,7 +32,8 @@ public class GenerateRandomString {
   }
 
   public static String generateAvatarFileName() {
-    return generateRandomString(5).append(new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime())).toString();
+    SimpleDateFormat sdf = new SimpleDateFormat(DateTimeConstant.yyyyMMddHHmmss);
+    return generateRandomString(5).append(sdf.format(Calendar.getInstance().getTime())).toString();
   }
 
 }

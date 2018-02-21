@@ -1,5 +1,5 @@
 /************************************************
- * Copyright 2017 by DTT - All rights reserved. *    
+ * Copyright 2018 by DTT - All rights reserved. *    
  ************************************************/
 package com.github.naviit.libs.common.util;
 
@@ -7,17 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author  Dang Thanh Tung 
- * {@literal <dtt.dangthanhtung@gmail.com>}
- * @since   28/12/2017
- */
 public class StringSplitter {
-  
+
   public static List<String> splitBySpace(String value) {
-    if (StringUtil.isEmpty(value)) {
-      return new ArrayList<String>();
-    }
+    if (StringUtil.isEmpty(value)) return new ArrayList<String>();
     String[] lstChar = value.split(StringUtil.SPACE);
     return Arrays.asList(lstChar);
   }
@@ -31,7 +24,8 @@ public class StringSplitter {
       char c = value.charAt(i);
       if (Character.isWhitespace(c) || Character.isSpaceChar(c)) {
         String element = value.substring(start, i);
-        if (!element.isEmpty()) temp.add(element);
+        if (!element.isEmpty())
+          temp.add(element);
         start = i + 1;
         i++;
         continue;
@@ -40,14 +34,14 @@ public class StringSplitter {
     }
     if (start < value.length()) {
       String element = value.substring(start);
-      if (!element.isEmpty()) temp.add(element);
+      if (!element.isEmpty())
+        temp.add(element);
     }
     return temp;
   }
 
-  public static String[] toArrayBySpace(String value){  
+  public static String[] toArrayBySpace(String value) {
     List<String> list = toListBySpace(value);
     return list.toArray(new String[list.size()]);
   }
-
 }

@@ -1,5 +1,5 @@
 /************************************************
- * Copyright 2017 by DTT - All rights reserved. *    
+ * Copyright 2018 by DTT - All rights reserved. *    
  ************************************************/
 package com.github.naviit.libs.common.util;
 
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * @author  Dang Thanh Tung 
  * {@literal <dtt.dangthanhtung@gmail.com>}
- * @since   28/12/2017
+ * @since   09/07/2017
  */
 public class JsonUtil {
 
