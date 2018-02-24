@@ -14,6 +14,8 @@ public class StringUtil {
   public static final String SPACE = " ";
   public static final String DOT = ".";
   public static final String COMMA = ",";
+  public static final String SEMICOLON = ";";
+  public static final String UNDERSCORE = "_";
 
   public static boolean isEmpty(String... args) {
     for (String ele : args) {

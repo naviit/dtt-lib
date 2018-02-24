@@ -3,8 +3,8 @@
  ************************************************/
 package com.github.naviit.libs.common.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -18,20 +18,22 @@ import org.springframework.core.env.Environment;
  */
 public class EnvironmentUtil {
 
-  private Environment env;
-
-  private EnvironmentUtil(Environment env) {
-    this.env = env;
-  }
-
-  public String getTextValue(String key, boolean required) {
-    validKey(key);
-    if(required) return env.getRequiredProperty(key);
+  public static String getTextValue(String key, Environment env) {
+    if(!validKey(key)) return null;
     return env.getProperty(key);
   }
 
-  public int getNumber(String key, int defaultValue) {
-    validKey(key);
+  public static List<String> getTextValues(String key, String separator, Environment env) {
+    if(!validKey(key)) return Collections.emptyList();
+    String value = env.getProperty(key);
+    if(StringUtil.isEmpty(value)) return Collections.emptyList();
+
+    String[] values = value.split(separator);
+    return Arrays.asList(values);
+  }
+
+  public static int getNumber(String key, int defaultValue, Environment env) {
+    if(!validKey(key)) return defaultValue;
     String value = env.getProperty(key);
     if(StringUtil.isEmpty(value)) return defaultValue;
 
@@ -43,10 +45,10 @@ public class EnvironmentUtil {
     return defaultValue;
   }
 
-  public List<Integer> getNumbers(String key, String separator) {
-    validKey(key);
+  public static List<Integer> getNumbers(String key, String separator, Environment env) {
+    if(!validKey(key)) return Collections.emptyList();
     String value = env.getProperty(key);
-    if(StringUtil.isEmpty(value)) return new ArrayList<Integer>();
+    if(StringUtil.isEmpty(value)) return Collections.emptyList();
 
     String[] elements = value.split(separator);
     Function<String, Integer> numberParser = s -> {
@@ -61,8 +63,8 @@ public class EnvironmentUtil {
     return list;
   }
 
-  public long getLongNumber(String key, long defaultValue) {
-    validKey(key);
+  public static long getLongNumber(String key, long defaultValue, Environment env) {
+    if(!validKey(key)) return defaultValue;
     String value = env.getProperty(key);
     if(StringUtil.isEmpty(value)) return defaultValue;
 
@@ -74,10 +76,10 @@ public class EnvironmentUtil {
     return defaultValue;
   }
 
-  public List<Long> getLongNumbers(String key, String separator) {
-    validKey(key);
+  public static List<Long> getLongNumbers(String key, String separator, Environment env) {
+    if(!validKey(key)) return Collections.emptyList();
     String value = env.getProperty(key);
-    if(StringUtil.isEmpty(value)) return new ArrayList<Long>();
+    if(StringUtil.isEmpty(value)) return Collections.emptyList();
 
     String[] elements = value.split(separator);
     Function<String, Long> numberParser = s -> {
@@ -92,7 +94,7 @@ public class EnvironmentUtil {
     return list;
   }
 
-  private boolean validKey(String key) {
+  private static boolean validKey(String key) {
     for(int i = 0; i < key.length(); i++) {
       char c = key.charAt(i);
       if(c == '_' || Character.isUpperCase(c)) {
