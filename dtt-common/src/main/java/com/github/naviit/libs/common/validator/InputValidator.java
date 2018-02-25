@@ -312,4 +312,92 @@ public abstract class InputValidator {
     throw new DTTException.InvalidDataException(message);
   }
 
+  public void validateSomeValuesField(Long value, long...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException();
+    long temp = value.longValue();
+    for(long ele : values) {
+      if(temp == ele) return;
+    }
+    throw new DTTException.InvalidDataException();
+  }
+
+  public void validateSomeValuesField(Long value, String message, long...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException(message);
+    long temp = value.longValue();
+    for(long ele : values) {
+      if(temp == ele) return;
+    }
+    throw new DTTException.InvalidDataException(message);
+  }
+
+  public void validateSomeValuesField(Integer value, int...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException();
+    int temp = value.intValue();
+    for(int ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException();
+  }
+
+  public void validateSomeValuesField(Integer value, String message, int...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException(message);
+    int temp = value.intValue();
+    for(int ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException(message);
+  }
+
+  public void validateSomeValuesField(Short value, short...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException();
+    short temp = value.shortValue();
+    for(short ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException();
+  }
+
+  public void validateSomeValuesField(Short value, String message, short...values) throws DTTException {
+    if (value == null) throw new DTTException.NoDataException(message);
+    short temp = value.shortValue();
+    for(short ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException(message);
+  }
+
+  public void validateSomeValuesField(String value, String...values) throws DTTException {
+    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
+    for(String ele : values) {
+      if(value.equals(ele)) return;
+    }
+    throw new DTTException.InvalidDataException();
+  }
+
+  public void validateSomeValuesField(String value, String message, String...values) throws DTTException {
+    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException(message);
+    for(String ele : values) {
+      if(value.equals(ele)) return;
+    }
+    throw new DTTException.InvalidDataException(message);
+  }
+
+  public void validateSomeValuesField(Character value, char...values) throws DTTException {
+    if(value == null) throw new DTTException.NoDataException();
+    char temp = value.charValue();
+    for(char ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException();
+  }
+
+  public void validateSomeValuesField(Character value, String message, char...values) throws DTTException {
+    if(value == null) throw new DTTException.NoDataException(message);
+    char temp = value.charValue();
+    for(char ele : values) {
+      if(ele == temp) return;
+    }
+    throw new DTTException.InvalidDataException(message);
+  }
+
 }
