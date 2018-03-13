@@ -20,6 +20,8 @@ public class FormatConstant {
       + "(\\([0-9]+\\)[\\- \\.]*)?"   // (<digits>)<sdd>*
       + "([0-9][0-9\\- \\.]+[0-9])"; // <digit><digit|sdd>+<digit>
 
+  public static final Pattern VN_MOBILE_PATTERN = Pattern.compile("^[0-9]{10,11}$");
+
   public static final Pattern UUID_PATTERN = Pattern.compile("^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-"
       + "[89ab][0-9a-f]{3}-[0-9a-f]{12}$");
 

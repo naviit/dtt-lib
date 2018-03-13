@@ -10,7 +10,7 @@ package com.github.naviit.libs.common.validator;
  */
 public class PhoneValidator {
 
-  public final static String MOBILE_PREFIX[] = {
+  public final static String[] MOBILE_PREFIX = {
       "0120","0121","0122","0123","0124","0125","0126","0127","0128","0129",
       "0162","0163","0164","0165","0166","0167","0168","0169",
       "0186", "0188","018",//018 hoa binh
@@ -19,7 +19,7 @@ public class PhoneValidator {
       "090", "091", "092", "093", "094", "096", "097", "098", "099",
   };
 
-  public final static String PHONE_PREFIX[] = {
+  public final static String[] PHONE_PREFIX = {
       "020","0210","0211","0218","0219","022","0230","0231","0240","0241","025","026","027","0280","0281","029",
       "030","031","0320","0321","033","0350","0351","036","037","038","039",
       "04",
