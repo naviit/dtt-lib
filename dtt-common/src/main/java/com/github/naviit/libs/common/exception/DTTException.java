@@ -23,8 +23,12 @@ import static com.github.naviit.libs.common.exception.ErrorCode.NOT_MATCH_DATA;
 import static com.github.naviit.libs.common.exception.ErrorCode.NOT_MATCH_DATA_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.NO_DATA;
 import static com.github.naviit.libs.common.exception.ErrorCode.NO_DATA_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.UNAVAILABLE_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.UNAVAILABLE_DATA_DESC;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR;
 import static com.github.naviit.libs.common.exception.ErrorCode.UNKNOWN_ERROR_DESC;
+import static com.github.naviit.libs.common.exception.ErrorCode.VERIFIED_DATA;
+import static com.github.naviit.libs.common.exception.ErrorCode.VERIFIED_DATA_DESC;
 
 /**
  * @author  Dang Thanh Tung 
@@ -194,6 +198,34 @@ public class DTTException extends Exception {
 
     public ExpiredDataException(String message) {
       super(EXPIRED_DATA, message);
+    }
+
+  }
+
+  public static class VerifiedDataException extends DTTException {
+
+    private static final long serialVersionUID = 3116057421992016567L;
+
+    public VerifiedDataException() {
+      super(VERIFIED_DATA, VERIFIED_DATA_DESC);
+    }
+
+    public VerifiedDataException(String message) {
+      super(VERIFIED_DATA, message);
+    }
+
+  }
+
+  public static class UnavailableDataException extends DTTException {
+
+    private static final long serialVersionUID = 3291173465305375297L;
+
+    public UnavailableDataException() {
+      super(UNAVAILABLE_DATA, UNAVAILABLE_DATA_DESC);
+    }
+
+    public UnavailableDataException(String message) {
+      super(UNAVAILABLE_DATA, message);
     }
 
   }

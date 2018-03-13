@@ -46,4 +46,10 @@ public class ErrorCode {
   public static final int EXPIRED_DATA = 11;
   public static final String EXPIRED_DATA_DESC = "Dữ liệu đã bị hết hạn";
 
+  public static final int VERIFIED_DATA = 12;
+  public static final String VERIFIED_DATA_DESC = "Dữ liệu đã được xác thực";
+
+  public static final int UNAVAILABLE_DATA = 13;
+  public static final String UNAVAILABLE_DATA_DESC = "Dữ liệu không khả dụng";
+
 }

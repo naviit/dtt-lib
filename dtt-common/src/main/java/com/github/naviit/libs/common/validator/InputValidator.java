@@ -4,9 +4,7 @@
 package com.github.naviit.libs.common.validator;
 
 import java.util.Date;
-import java.util.regex.Matcher;
 
-import com.github.naviit.libs.common.CommonConstant;
 import com.github.naviit.libs.common.exception.DTTException;
 import com.github.naviit.libs.common.util.DateUtil;
 import com.github.naviit.libs.common.util.StringUtil;
@@ -16,7 +14,7 @@ import com.github.naviit.libs.common.util.StringUtil;
  * {@literal <dtt.dangthanhtung@gmail.com>}
  * @since   28/12/2017
  */
-public abstract class InputValidator {
+public abstract class InputValidator extends FormatValidator {
 
   public void validateEmptyField(String value) throws DTTException {
     if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
@@ -114,34 +112,6 @@ public abstract class InputValidator {
     Date date = DateUtil.toDate(value, format);
     if(date == null) throw new DTTException.InvalidFormatDataException(message);
     return date;
-  }
-
-  public void validateEmailField(String value) throws DTTException {
-    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
-    Matcher matcher = CommonConstant.EMAIL_PATTERN.matcher(value.trim());
-    if(matcher.matches()) return;
-    throw new DTTException.InvalidFormatDataException();
-  }
-
-  public void validateEmailField(String value, String message) throws DTTException {
-    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException(message);
-    Matcher matcher = CommonConstant.EMAIL_PATTERN.matcher(value.trim());
-    if(matcher.matches()) return;
-    throw new DTTException.InvalidFormatDataException(message);
-  }
-
-  public String validatePhoneField(String value) throws DTTException {
-    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException();
-    String phone = PhoneValidator.validPhoneNumber(value);
-    if(phone == null) throw new DTTException.InvalidFormatDataException();
-    return phone;
-  }
-
-  public String validatePhoneField(String value, String message) throws DTTException {
-    if (StringUtil.isEmpty(value)) throw new DTTException.NoDataException(message);
-    String phone = PhoneValidator.validPhoneNumber(value);
-    if(phone == null) throw new DTTException.InvalidFormatDataException(message);
-    return phone;
   }
 
   public void validateRangeField(Long value, long min, long max) throws DTTException {
